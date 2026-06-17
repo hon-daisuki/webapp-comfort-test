@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webアプリケーション概要 確認問題</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-text">
+      <p class="course">アプリケーション開発 III-A</p>
+      <h1>Webアプリケーション概要 確認問題</h1>
+      <p class="lead">テキスト15〜27ページを見ながら解いてOK。満点になるまで終了できません。</p>
+    </div>
+    <img class="hero-image" src="./assets/web-architecture.png" alt="Webブラウザ、Webサーバ、DNS、データベースの関係図">
+  </header>
+
+  <main>
+    <section class="status-panel" aria-label="進捗">
+      <div>
+        <span class="label">現在の得点</span>
+        <strong id="scoreText">未採点</strong>
+      </div>
+      <div>
+        <span class="label">問題数</span>
+        <strong id="countText">0問</strong>
+      </div>
+      <div>
+        <span class="label">目標</span>
+        <strong>満点</strong>
+      </div>
+    </section>
+
+    <section class="instructions">
+      <h2>進め方</h2>
+      <ol>
+        <li>テキスト15〜27ページを開きながら解く。</li>
+        <li>採点ボタンを押す。間違えた問題はヒントを見て解き直す。</li>
+        <li>満点になると、問題と解答入りのdocxファイルが自動で作成される。</li>
+      </ol>
+    </section>
+
+    <form id="quizForm" class="quiz-form" novalidate></form>
+
+    <section class="actions" aria-label="採点操作">
+      <button id="gradeButton" type="button">採点する</button>
+      <button id="resetButton" type="button" class="secondary">リセット</button>
+    </section>
+
+    <section id="resultPanel" class="result-panel" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>満点後に生成されるdocxには、全問題・正答・解説が入ります。</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
