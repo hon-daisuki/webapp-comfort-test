@@ -3,58 +3,101 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Webアプリケーション概要 確認問題</title>
-  <link rel="stylesheet" href="./styles.css">
+  <title>自己紹介ページ一覧</title>
+  <style>
+    :root { color-scheme: light; --ink: #17202a; --muted: #667085; --line: #d9e0e7; --bg: #f4f7f8; --panel: #fff; --accent: #087f5b; --soft: #dff5ec; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg); font-family: "Yu Gothic", "Meiryo", system-ui, sans-serif; line-height: 1.6; }
+    header { background: var(--panel); border-bottom: 1px solid var(--line); }
+    .wrap { width: min(960px, calc(100% - 32px)); margin: 0 auto; }
+    .heading { padding: 32px 0 24px; }
+    h1 { margin: 0; font-size: clamp(28px, 5vw, 42px); letter-spacing: 0; }
+    .summary { margin: 6px 0 0; color: var(--muted); }
+    main { padding: 24px 0 44px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card { min-height: 88px; display: grid; grid-template-columns: 52px 1fr 24px; gap: 14px; align-items: center; padding: 16px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; text-decoration: none; }
+    .card:hover, .card:focus-visible { border-color: var(--accent); box-shadow: 0 5px 18px rgb(23 32 42 / 9%); outline: none; }
+    .number { width: 48px; height: 48px; display: grid; place-items: center; color: var(--accent); background: var(--soft); border-radius: 8px; font-weight: 800; }
+    .label { font-weight: 700; }
+    .arrow { color: var(--accent); font-size: 22px; }
+  </style>
 </head>
 <body>
-  <header class="app-header">
-    <div class="header-text">
-      <p class="course">アプリケーション開発 III-A</p>
-      <h1>Webアプリケーション概要 確認問題</h1>
-      <p class="lead">テキスト15〜27ページを見ながら解いてOK。満点になるまで終了できません。</p>
-    </div>
-    <img class="hero-image" src="./assets/web-architecture.png" alt="Webブラウザ、Webサーバ、DNS、データベースの関係図">
-  </header>
-
-  <main>
-    <section class="status-panel" aria-label="進捗">
-      <div>
-        <span class="label">現在の得点</span>
-        <strong id="scoreText">未採点</strong>
-      </div>
-      <div>
-        <span class="label">問題数</span>
-        <strong id="countText">0問</strong>
-      </div>
-      <div>
-        <span class="label">目標</span>
-        <strong>満点</strong>
-      </div>
-    </section>
-
-    <section class="instructions">
-      <h2>進め方</h2>
-      <ol>
-        <li>テキスト15〜27ページを開きながら解く。</li>
-        <li>採点ボタンを押す。間違えた問題はヒントを見て解き直す。</li>
-        <li>満点になると、問題と解答入りのdocxファイルが自動で作成される。</li>
-      </ol>
-    </section>
-
-    <form id="quizForm" class="quiz-form" novalidate></form>
-
-    <section class="actions" aria-label="採点操作">
-      <button id="gradeButton" type="button">採点する</button>
-      <button id="resetButton" type="button" class="secondary">リセット</button>
-    </section>
-
-    <section id="resultPanel" class="result-panel" aria-live="polite"></section>
-  </main>
-
-  <footer>
-    <p>満点後に生成されるdocxには、全問題・正答・解説が入ります。</p>
-  </footer>
-
-  <script src="./app.js"></script>
+  <header><div class="wrap heading"><h1>自己紹介ページ一覧</h1><p class="summary">番号を選ぶと、それぞれの自己紹介ページを開きます。</p></div></header>
+  <main class="wrap"><div class="grid"><a class="card" href="students/project_01/index.html">
+  <span class="number">01</span>
+  <span class="label">01 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_02/index.html">
+  <span class="number">02</span>
+  <span class="label">02 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_03/index.html">
+  <span class="number">03</span>
+  <span class="label">03 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_04/index.html">
+  <span class="number">04</span>
+  <span class="label">04 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_05/index.html">
+  <span class="number">05</span>
+  <span class="label">05 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_06/index.html">
+  <span class="number">06</span>
+  <span class="label">06 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_07/index.html">
+  <span class="number">07</span>
+  <span class="label">07 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_08/index.html">
+  <span class="number">08</span>
+  <span class="label">08 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_09/index.html">
+  <span class="number">09</span>
+  <span class="label">09 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_10/index.html">
+  <span class="number">10</span>
+  <span class="label">10 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_11/index.html">
+  <span class="number">11</span>
+  <span class="label">11 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_12/index.html">
+  <span class="number">12</span>
+  <span class="label">12 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_13/index.html">
+  <span class="number">13</span>
+  <span class="label">13 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_14/index.html">
+  <span class="number">14</span>
+  <span class="label">14 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a class="card" href="students/project_15/index.html">
+  <span class="number">15</span>
+  <span class="label">15 の自己紹介ページ</span>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+</a></div></main>
 </body>
 </html>

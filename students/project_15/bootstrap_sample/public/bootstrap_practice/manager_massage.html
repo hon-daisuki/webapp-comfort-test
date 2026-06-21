@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>管理者への一言メッセージ</title>
+	<!-- ユーザー環境のローカルファイルを最優先、プレビュー動作用にフォールバックを用意 -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+		onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';">
+	<style>
+		/* より洗練されたBootstrapライクなデザイン調整 */
+		.card {
+			border-radius: 0.5rem;
+		}
+
+		.card-header {
+			border-top-left-radius: 0.5rem !important;
+			border-top-right-radius: 0.5rem !important;
+		}
+
+		.message-card {
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.message-card:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+		}
+	</style>
+</head>
+
+<body class="bg-light">
+
+	<div class="container my-5">
+		<div class="row justify-content-center g-4">
+			<!-- メッセージ送信フォーム (左側/中央配置) -->
+			<div class="col-lg-6 col-md-8">
+				<div class="card shadow-sm border-0">
+					<div class="card-header bg-primary text-white py-3">
+						<h5 class="card-title mb-0 text-center">💌 管理者への一言メッセージ</h5>
+					</div>
+
+					<div class="card-body p-4">
+						<!-- 送信完了などのフィードバック表示用 -->
+						<div id="alertArea"></div>
+
+						<form id="messageForm" class="needs-validation" novalidate>
+
+							<div class="mb-3">
+								<label for="authorName" class="form-label fw-bold">投稿者名</label>
+								<input type="text" class="form-control" id="authorName" name="author_name"
+									placeholder="匿名でもOK" required maxlength="20">
+								<div class="invalid-feedback">
+									投稿者名を入力してください（20文字以内）。
+								</div>
+							</div>
+
+							<div class="mb-3">
+								<label for="genderSelect" class="form-label fw-bold">性別</label>
+								<select class="form-select" id="genderSelect" name="gender" required>
+									<option value="" selected disabled>選択してください</option>
+									<option value="male">男性</option>
+									<option value="female">女性</option>
+									<option value="other">その他</option>
+									<option value="prefer_not_to_say">回答しない</option>
+								</select>
+								<div class="invalid-feedback">
+									性別を選択してください。
+								</div>
+							</div>
+
+							<div class="mb-3">
+								<label for="messageText" class="form-label fw-bold">メッセージ</label>
+								<textarea class="form-control" id="messageText" name="message" rows="4"
+									placeholder="管理者に伝えたいことを入力してください" required maxlength="300"></textarea>
+								<div class="form-text text-end" id="textLengthCounter">0 / 300 文字</div>
+								<div class="invalid-feedback">
+									メッセージを入力してください（300文字以内）。
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<label for="deletePassword" class="form-label fw-bold">削除用パスワード</label>
+								<input type="password" class="form-control" id="deletePassword" name="delete_password"
+									placeholder="4〜8桁の半角英数字" required pattern="[a-zA-Z0-9]{4,8}">
+								<div class="form-text">※後からメッセージを削除する際に必要となります（4〜8文字の半角英数字）。</div>
+								<div class="invalid-feedback">
+									4〜8桁の半角英数字で入力してください。
+								</div>
+							</div>
+
+							<div class="d-grid">
+								<button type="submit" class="btn btn-primary btn-lg fw-bold">メッセージを送信する</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- 送信されたメッセージ一覧 (右側配置) -->
+			<div class="col-lg-6 col-md-8">
+				<div class="card shadow-sm border-0">
+					<div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+						<h5 class="card-title mb-0">📥 受信メッセージ一覧</h5>
+						<span class="badge bg-secondary" id="messageCount">0 件</span>
+					</div>
+					<div class="card-body p-4 bg-white">
+						<div id="messagesContainer" class="overflow-auto"
+							style="max-height: 520px; padding-right: 5px;">
+							<!-- JavaScriptでここにメッセージカードが動的に挿入されます -->
+							<div class="text-center py-5 text-muted" id="noMessagesPlaceholder">
+								<p class="fs-4 mb-2">💬</p>
+								<p class="mb-0 small">メッセージはまだありません。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- メッセージ削除用パスワード確認モーダル -->
+	<div class="modal fade" id="deleteConfirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header bg-danger text-white">
+					<h5 class="modal-title" id="deleteModalLabel">🔒 メッセージの削除確認</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+						aria-label="閉じる"></button>
+				</div>
+				<div class="modal-body">
+					<p class="mb-3">このメッセージを削除するには、投稿時に設定した削除用パスワードを入力してください。</p>
+					<div class="mb-3">
+						<label for="modalDeletePassword" class="form-label fw-bold">削除パスワード</label>
+						<input type="password" class="form-control" id="modalDeletePassword"
+							placeholder="パスワードを入力してください">
+						<div class="invalid-feedback" id="modalErrorText">
+							パスワードが正しくありません。
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+					<button type="button" class="btn btn-danger" id="executeDeleteBtn">削除する</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ユーザーインポート環境 (エラー時CDNフォールバック) -->
+	<script src="jquery-4.0.0.slim.min.js"
+		onerror="this.onerror=null;this.src='https://code.jquery.com/jquery-3.7.1.min.js';"></script>
+	<script src="bootstrap.bundle.min.js"
+		onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';"></script>
+
+	<script>
+		$(document).ready(function () {
+			// localStorageからデータを取得（初期値は空配列）
+			let messageList = JSON.parse(localStorage.getItem('messages_data')) || [];
+			let targetId = null; // 削除対象IDの保持用
+			let deleteModalInstance = null;
+
+			// 初期のメッセージ一覧描画
+			renderMessages();
+
+			// メッセージ描画関数
+			function renderMessages() {
+				const $container = $('#messagesContainer');
+				$container.empty();
+
+				if (messageList.length === 0) {
+					$('#noMessagesPlaceholder').show().appendTo($container);
+					$('#messageCount').text('0 件');
+					return;
+				}
+
+				$('#noMessagesPlaceholder').hide();
+				$('#messageCount').text(`${messageList.length} 件`);
+
+				// 新しい投稿が上に来るように逆順で配置
+				const sortedList = [...messageList].reverse();
+
+				sortedList.forEach(item => {
+					// 性別に応じたバッジ色とボーダー色の設定
+					let genderBadge = '';
+					let borderStyle = 'border-start border-4 ';
+
+					switch (item.gender) {
+						case 'male':
+							genderBadge = '<span class="badge bg-primary">男性</span>';
+							borderStyle += 'border-primary';
+							break;
+						case 'female':
+							genderBadge = '<span class="badge bg-danger">女性</span>';
+							borderStyle += 'border-danger';
+							break;
+						case 'other':
+							genderBadge = '<span class="badge bg-success">その他</span>';
+							borderStyle += 'border-success';
+							break;
+						default:
+							genderBadge = '<span class="badge bg-secondary">回答しない</span>';
+							borderStyle += 'border-secondary';
+					}
+
+					// 日時の整形
+					const date = new Date(item.timestamp);
+					const formattedTime = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+
+					const messageCardHtml = `
+						<div class="card mb-3 shadow-sm border-0 ${borderStyle} message-card">
+							<div class="card-body p-3">
+								<div class="d-flex justify-content-between align-items-start mb-2">
+									<div>
+										${genderBadge}
+										<span class="ms-2 fw-bold text-dark" style="font-size: 0.95rem;">${escapeHtml(item.author)}</span>
+									</div>
+									<small class="text-muted" style="font-size: 0.8rem;">${formattedTime}</small>
+								</div>
+								<p class="card-text mb-2 text-secondary" style="white-space: pre-wrap; font-size: 0.9rem;">${escapeHtml(item.text)}</p>
+								<div class="text-end">
+									<button class="btn btn-link btn-sm text-danger p-0 text-decoration-none btn-delete-trigger" data-id="${item.id}" style="font-size: 0.8rem;">
+										🗑️ メッセージを削除する
+									</button>
+								</div>
+							</div>
+						</div>
+					`;
+					$container.append(messageCardHtml);
+				});
+			}
+
+			// HTMLエスケープ（XSS対策）
+			function escapeHtml(string) {
+				if (typeof string !== 'string') return '';
+				return string.replace(/[&<>"']/g, function (match) {
+					const escapeMap = {
+						'&': '&amp;',
+						'<': '&lt;',
+						'>': '&gt;',
+						'"': '&quot;',
+						"'": '&#39;'
+					};
+					return escapeMap[match];
+				});
+			}
+
+			// メッセージフォーム入力時の文字数制限カウント
+			$('#messageText').on('input', function () {
+				const len = $(this).val().length;
+				$('#textLengthCounter').text(`${len} / 300 文字`);
+				if (len >= 300) {
+					$('#textLengthCounter').addClass('text-danger fw-bold');
+				} else {
+					$('#textLengthCounter').removeClass('text-danger fw-bold');
+				}
+			});
+
+			// 送信ボタン時のBootstrap 5 バリデーション処理
+			$('#messageForm').on('submit', function (event) {
+				event.preventDefault();
+
+				if (!this.checkValidity()) {
+					event.stopPropagation();
+					$(this).addClass('was-validated');
+					return;
+				}
+
+				// 新しいメッセージオブジェクトの作成
+				const newMessage = {
+					id: Date.now().toString(),
+					author: $('#authorName').val().trim(),
+					gender: $('#genderSelect').val(),
+					text: $('#messageText').val().trim(),
+					password: $('#deletePassword').val(),
+					timestamp: new Date().toISOString()
+				};
+
+				// 配列に追加して保存
+				messageList.push(newMessage);
+				localStorage.setItem('messages_data', JSON.stringify(messageList));
+
+				// 一覧の再表示
+				renderMessages();
+
+				// フォームの初期化
+				this.reset();
+				$(this).removeClass('was-validated');
+				$('#textLengthCounter').text('0 / 300 文字');
+
+				// アラートの表示
+				const alertHtml = `
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>送信完了!</strong> 管理者へのメッセージが正常に保存されました。
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+					</div>
+				`;
+				$('#alertArea').html(alertHtml);
+
+				// 5秒後に自動でアラートを消去
+				setTimeout(() => {
+					$('.alert').alert('close');
+				}, 5000);
+			});
+
+			// 削除ボタンが押された時のモーダル表示
+			$(document).on('click', '.btn-delete-trigger', function () {
+				targetId = $(this).data('id').toString();
+				$('#modalDeletePassword').val('').removeClass('is-invalid');
+				$('#modalErrorText').hide();
+
+				// モーダルの起動
+				deleteModalInstance = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+				deleteModalInstance.show();
+			});
+
+			// モーダル内削除実行
+			$('#executeDeleteBtn').on('click', function () {
+				const inputPassword = $('#modalDeletePassword').val();
+				const targetItem = messageList.find(item => item.id === targetId);
+
+				if (targetItem) {
+					if (targetItem.password === inputPassword) {
+						// パスワード一致で削除
+						messageList = messageList.filter(item => item.id !== targetId);
+						localStorage.setItem('messages_data', JSON.stringify(messageList));
+
+						// 一覧リフレッシュ
+						renderMessages();
+
+						// モーダルを隠す
+						deleteModalInstance.hide();
+
+						// 完了通知
+						const alertHtml = `
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								<strong>削除完了</strong> メッセージを正常に削除しました。
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+							</div>
+						`;
+						$('#alertArea').html(alertHtml);
+					} else {
+						// パスワード不一致時のフィードバック
+						$('#modalDeletePassword').addClass('is-invalid');
+						$('#modalErrorText').show();
+					}
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<title>自己紹介</title>
+
+	<style>
+		.vertical-text {
+			writing-mode: vertical-rl;
+			text-orientation: upright;
+			text-align: left;
+			/* ← 左寄せ */
+			font-size: 1.4rem;
+			/* ← 文字を大きく */
+			line-height: 2.2;
+			letter-spacing: 0.2em;
+		}
+
+
+
+		.bold-line {
+			font-weight: 600;
+			/* 太字より柔らかい強調 */
+		}
+
+
+		.fixed-table {
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		.novel-font {
+			font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+			line-height: 1.9;
+			letter-spacing: 0.05em;
+		}
+
+		body {
+			background-color: #faf0e6;
+		}
+
+		/* ナビゲーションバーのフォントを小説風に */
+		.navbar,
+		.navbar .nav-link,
+		.navbar .dropdown-item {
+			font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+			letter-spacing: 0.05em;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="navigation">
+        <nav class="navbar navbar-expand-lg" style="background-color:#8b4513 ;">
+            <ul class="navbar-nav">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown">プロフィール</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../public/bootstrap_practice/boot.html">基本情報</a>
+                        <a class="dropdown-item" href="../../public/bootstrap_practice/hobby.html">趣味</a>
+                        <a class="dropdown-item" href="../../public/bootstrap_practice/music.html">好きな音楽</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../public/bootstrap_practice/form.html">一言メッセージ</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+
+	<div class="container text-center">
+
+		<div class="container d-flex justify-content-center">
+
+
+
+
+			<div class="vertical-text novel-font">
+				<div class="vertical-text">
+					&nbsp;みなさん、初めまして。<br>
+					<span class="bold-line">「加藤優佳（かとうゆうか）」</span><br>
+					と申します。<br>
+					&nbsp;誕生日は<br>
+					<span class="bold-line">「5月5日」</span><br>
+					でございます。<br>
+					&nbsp;年齢は<br>
+					<span class="bold-line">「20歳」</span><br>
+					になりました。<br>
+					&nbsp;出身地は<br>
+					<span class="bold-line">「西原町」</span><br>
+					という那覇にほど近い、田舎町でございます。<br>
+					&nbsp;趣味は<br>
+					<span class="bold-line">「左上のメニューから」</span><br>
+					見ることが出来ます。<br>
+					&nbsp;以後お見知りおきを。<br>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<script src="../js/jquery-4.0.0.slim.min.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

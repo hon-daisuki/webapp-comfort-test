@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介サイト</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #20b2aa; /* 画像のイメージに近いエメラルドグリーン */
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        /* ヘッダー・ナビゲーションバーのカスタムスタイル */
+        .custom-navbar {
+            background-color: var(--main-color) !important;
+        }
+        .custom-navbar .navbar-brand,
+        .custom-navbar .nav-link {
+            color: #ffffff !important;
+        }
+        .custom-navbar .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid #ffffff;
+        }
+        /* プロフィール画像の丸型トリミング */
+        .profile-img-container {
+            width: 200px;
+            height: 200px;
+            border: 4px solid var(--main-color);
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* カードのシャドウと角丸 */
+        .custom-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        .section-title {
+            color: var(--main-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        /* テーブルの線調整 */
+        .table-profile th, .table-profile td {
+            border: none;
+            padding: 12px 8px;
+        }
+        /* フッター */
+        footer {
+            border-top: 1px dashed #ccc;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg custom-navbar sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">OOOOOO</a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav navbar-nav" id="myTab" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            プロフィール
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" id="home-tab-trigger">自己紹介トップ</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">好きなキャラ</a></li>
+                            <li><a class="dropdown-item" href="#">好きなゲーム</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-pane" type="button" role="tab" aria-controls="profile-pane" aria-selected="true">自己紹介</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="message-tab" data-bs-toggle="tab" data-bs-target="#message-pane" type="button" role="tab" aria-controls="message-pane" aria-selected="false">一言メッセージ</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tab-content" id="myTabContent">
+            
+            <div class="tab-pane fade show active" id="profile-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <div class="custom-card">
+                    <div class="row align-items-center g-4">
+                        <div class="col-12 col-md-4 text-center">
+                            <div class="profile-img-container">
+                                <img src="https://www.megahobby.jp/images/item/item_0000004269_pKJjwFjEubt8_06.jpg" alt="プロフィール画像">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <h2 class="section-title">自己紹介</h2>
+                            <div class="table-responsive">
+                                <table class="table table-profile mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width: 30%;">名前</th>
+                                            <td>爆豪勝己</td>
+                                        </tr>
+                                        <tr>
+                                            <th>生年月日</th>
+                                            <td>1月8日</td>
+                                        </tr>
+                                        <tr>
+                                            <th>年齢</th>
+                                            <td>19</td>
+                                        </tr>
+                                        <tr>
+                                            <th>出身地</th>
+                                            <td>沖縄県</td>
+                                        </tr>
+                                        <tr>
+                                            <th>趣味</th>
+                                            <td>読書、ゲーム、推し活</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="message-pane" role="tabpanel" aria-labelledby="message-tab" tabindex="0">
+                <div class="custom-card">
+                    <div class="row g-4 align-items-start">
+                        <div class="col-12 col-md-8">
+                            <h2 class="section-title">一言メッセージ</h2>
+                            <form onsubmit="return false;">
+                                <div class="mb-3">
+                                    <label for="authorName" class="form-label fw-bold">投稿者名</label>
+                                    <input type="text" class="form-content form-control rounded-pill" id="authorName" placeholder="名前を入力してください">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="genderSelect" class="form-label fw-bold">性別</label>
+                                    <select class="form-select rounded-pill" id="genderSelect">
+                                        <option selected disabled>男性</option> <option value="1">男性</option>
+                                        <option value="2">女性</option>
+                                        <option value="3">その他・回答しない</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwordInput" class="form-label fw-bold">パスワード（削除用）</label>
+                                    <input type="password" class="form-control rounded-pill" id="passwordInput">
+                                    <div class="form-check mt-2 ms-2">
+                                        <input class="form-check-input" type="checkbox" id="showPassword">
+                                        <label class="form-check-label text-muted" for="showPassword" style="font-size: 0.85rem;">
+                                            パスワードを表示
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="messageText" class="form-label fw-bold">メッセージ</label>
+                                    <textarea class="form-control" id="messageText" rows="4" placeholder="メッセージを入力してください" style="border-radius: 15px;"></textarea>
+                                </div>
+                                <button type="submit" class="btn text-white px-5 rounded-pill shadow-sm" style="background-color: var(--main-color);">送信</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 OOOOOO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.getElementById('home-tab-trigger').addEventListener('click', function(e) {
+            e.preventDefault();
+            const profileTab = new bootstrap.Tab(document.getElementById('profile-tab'));
+            profileTab.show();
+        });
+    </script>
+</body>
+</html>

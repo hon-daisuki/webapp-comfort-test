@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屋嘉比 倖平 - PROFILE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #ffffff; padding-top: 70px; }
+        .main-wrapper { border: 1px solid #000; padding: 40px; border-radius: 4px; margin-bottom: 50px; }
+        .nana-pink { color: #ff007f !important; font-weight: bold; }
+        /* 要件1のためのテーブル装飾 */
+        .profile-table th { width: 30%; font-weight: bold; background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <!-- 要件4&5: ナビゲーションバー & ドロップダウン -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="boot.html">KOHEI.Y HP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="dropdown" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="boot.html">自己紹介</a></li>
+                    <li class="nav-item"><a class="nav-link" href="message.html">管理者への一言</a></li>
+                    <!-- 要件4: メニューバー内のドロップダウン -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">BIG LOVE</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item nana-pink" href="nana.html">NANA</a></li>
+                            <li><a class="dropdown-item" href="camaro.html">車 (Camaro)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="main-wrapper shadow-sm">
+            <h1 class="mb-4 fw-bold border-bottom border-dark pb-2">私の自己紹介</h1>
+            <!-- 要件1: テーブル -->
+            <table class="table table-bordered">
+                <tbody>
+                    <tr><th>NAME</th><td>屋嘉比 倖平（ヤカビ コウヘイ）</td></tr>
+                    <tr><th>BIRTHDAY</th><td>6月9日</td></tr>
+                    <tr><th>FROM</th><td>沖縄県</td></tr>
+                    <tr><th>HOBBY</th><td>ドライブ、アニメ、読書</td></tr>
+                    <tr><th>MBTI</th><td>ENFP（広報運動家）</td></tr>
+                </tbody>
+            </table>
+
+            <div class="row mt-5 text-center">
+                <div class="col-md-6 mb-3">
+                    <a href="nana.html" class="btn btn-outline-danger w-100 py-3"> NANA について</a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="camaro.html" class="btn btn-outline-dark w-100 py-3"> カマロ について</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

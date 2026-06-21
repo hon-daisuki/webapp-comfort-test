@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scalse=1,
+shrink-to-fit=no">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<title></title>
+	<style>
+		body {
+			background-color: #faf0e6;
+			font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+			letter-spacing: 0.05em;
+			line-height: 1.9;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="navigation">
+		<nav class="navbar navbar-expand-lg" style="background-color:#8b4513 ;">
+			<ul class="navbar-nav">
+
+				<li class="nav-item dropdown">
+					<a class="nav-link  dropdown-toggle" href="" data-bs-toggle="dropdown">プロフィール</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="../../public/bootstrap_practice/boot.html">基本情報</a>
+						<a class="dropdown-item" href="../../public/bootstrap_practice/hobby.html">趣味</a>
+						<a class="dropdown-item" href="../../public/bootstrap_practice/music.html">好きな音楽</a>
+					</div>
+				<li class="nav-item"><a class="nav-link" href="../../public/bootstrap_practice/form.html">一言メッセージ</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<h2>一言メッセージ</h2>
+	<div class="container">
+		<form>
+
+			<!-- 投稿者名 -->
+			<div class="col-6">
+				<label class="form-label">投稿者名</label>
+				<input type="text" class="form-control" name="username" placeholder="お名前を入力">
+			</div>
+
+			<!-- 性別（ドロップダウン） -->
+			<div class="col-6">
+				<label class="form-label">性別</label>
+				<select class="form-select" name="gender">
+					<option value="">選択してください</option>
+					<option value="male">男性</option>
+					<option value="female">女性</option>
+					<option value="other">その他</option>
+				</select>
+			</div>
+
+			<!-- メッセージ -->
+			<div class="mb-3">
+				<label class="form-label">メッセージ</label>
+				<textarea class="form-control" name="message" rows="4" placeholder="メッセージを入力"></textarea>
+			</div>
+
+			<!-- 削除用パスワード -->
+			<div class="col-6">
+				<label class="form-label">削除用パスワード</label>
+				<input type="password" class="form-control" name="delete_pass" placeholder="4桁の数字など">
+			</div>
+
+			<!-- 送信ボタン -->
+			<button type="submit" class="btn btn-primary">送信</button>
+
+		</form>
+
+	</div>
+	<script src="../js/jquery-3.7.1.slim.min.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

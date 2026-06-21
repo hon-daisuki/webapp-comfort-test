@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介サイト</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f4f6f9;
+            color: #333333;
+        }
+        .profile-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-top: 40px;
+        }
+        .table {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">My Profile</a>
+            <button class="navbar-expand" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto"> <li class="nav-item">
+                        <a class="nav-link active" href="index.html">自己紹介</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="message.html">管理者への一言メッセージ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            その他リンク
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">趣味のページ（未実装）</a></li>
+                            <li><a class="dropdown-item" href="#">ブログ（未実装）</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 profile-card">
+                <h1 class="mb-3 fw-bold border-bottom pb-2 text-primary">自己紹介</h1>
+                <p class="text-muted">私のプロフィールです。よろしくお願いします！</p>
+
+                <table class="table table-hover table-striped border shadow-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width: 30%;">項目</th>
+                            <th>内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">名前</td>
+                            <td>アルマーニ</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">趣味</td>
+                            <td>カラオケ、運動、ゲーム</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

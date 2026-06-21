@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自己紹介ページ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+<style>
+body {
+	 background-color:#fff0f5;
+    font-family:"Yu Gothic";
+}
+h1{
+	 background-color:#ffb6c1;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:15px;
+    width:500px;
+    margin:auto;
+}
+table {
+	 background-color:white;
+    width:100%;
+     max-width:1000px;
+    margin:30px auto;
+    border-collapse:collapse;
+    /*かどまる！*/
+    border-radius:20px;
+    overflow:hidden;
+    /*影がつくよ！*/ 
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+th {
+    background-color:#ffd1dc;
+    color:#555;
+    padding:15px;
+    border:1px solid #ffc0cb;
+}
+td {
+	padding:15px;
+	border:1px solid #ffc0cb;
+}/*ここは偶数行だけ色を変える！*/
+tr:nth-child(even){
+	background-color: #fff5f7;
+}
+img{
+    width:100%;
+    max-width:400px;
+    height:auto;
+}/*ナビゲーション*/
+nav {
+	background-color: lightpink;
+	padding:15px;
+}
+nav ul {
+	list-style:none;
+	display:flex;
+	justify-content:center;
+	gap:40px;
+	margin:0;
+	padding:0;
+}
+nav li {
+	position:relative;
+}
+nav a:hover {
+	background-color: hotpink;
+	color:white;
+	box-shadow: 0 0 10px pink;
+}
+nav a {
+	text-decoration:none;
+	color:white;
+	font-weight: bold;
+	font-size:18px;
+}/*ドロップダウンメニュー*/
+.menu {
+	list-style: none;
+	display:none;
+	position:absolute;
+	top:40px;
+	left:0;
+	background-color: white;
+	padding:10px 20px;
+	border-radius: 10px;
+	min-width: 180px;
+	z-index: 1000;
+}
+.menu li {
+	margin:10px 0;
+}
+.menu a {
+	color: hotpink;
+}/*マウスを乗せたら表示！*/
+.dropdown:hover .menu {
+	display:block;
+}
+.dropdown {
+	padding-bottom:10px;
+}
+</style>
+</head>
+<body>
+<nav>
+	<ul>
+		<li class = "dropdown">
+			<a href = "">PROFILE</a>
+			<ul class = "menu">
+				<li><a href = "fashion.html">FASHION</a></li>
+				<li><a href = "animation.html">ANIMATION</a></li>
+				<li><a href = "manga.html">MANGA</a></li>
+				<li><a href = "music.html">MUSIC</a></li>
+			</ul>
+		</li>
+		<li><a href = "contact.html">CONTACT</a></li>
+	</ul>
+</nav>
+	<h1>自己紹介</h1>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<table>
+				<tr>
+					<td rowspan = "6"><img src="image/unnamed.jpg"></td>
+				</tr>
+				<tr>
+					<th>🎀名前🎀</th>
+					<td>上原　來幸</td>
+				</tr>
+	
+				<tr>
+					<th>生年月日🌙</th>
+					<td>8月23日</td>
+				</tr>
+	
+				<tr>
+					<th>年齢💗</th>
+					<td>１９歳</td>
+				</tr>
+	
+				<tr>
+					<th>出身地📍</th>
+					<td>沖縄県那覇市</td>
+				</tr>
+	
+				<tr>
+					<th>趣味👒</th>
+					<td>ファッション・アニメ・マンガ・音楽</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>	
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>一言メッセージ</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.bg-teal {
+			background-color: #008b8b !important;
+		}
+
+		.text-teal {
+			color: #008b8b !important;
+		}
+
+		.btn-teal {
+			background-color: #008b8b !important;
+			color: white !important;
+		}
+
+		.btn-teal:hover {
+			background-color: #006b6b !important;
+		}
+
+		body {
+			padding-top: 70px;
+			background-color: #f8fafc;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-teal fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">自己紹介ページ</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							メニュー
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="boot.html">自己紹介を見る</a></li>
+							<li><a class="dropdown-item" href="boot2.html">一言メッセージ</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white-50"
+							href="https://youtube.com/@giruru?si=i3Dn4Rd71Dyaw5gW">好きなストリーマー</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white-50"
+							href="https://youtube.com/@mashiromeme?si=ITPPvpveKyBdhN-s">好きなV</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white-50"
+							href="https://youtube.com/@syudou_official?si=yXyK-iolcSoEapqQ">好きなアーティスト</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container my-5">
+
+		<div class="row mb-4">
+			<div class="col">
+				<h1 class="border-bottom pb-2 text-teal fw-bold">一言メッセージ</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10 mx-auto">
+				<div class="card p-4 shadow-sm bg-white">
+					<form>
+						<div class="row g-3 mb-3">
+							<div class="col-12 col-md-4">
+								<label for="inputName" class="form-label fw-bold">投稿者名</label>
+								<input type="text" class="form-control" id="inputName" placeholder="名前を入力してください">
+							</div>
+							<div class="col-12 col-md-4">
+								<label for="selectGender" class="form-label fw-bold">性別</label>
+								<select id="selectGender" class="form-select">
+									<option selected disabled value="">選択</option>
+									<option value="male">男</option>
+									<option value="female">女</option>
+									<option value="other">その他</option>
+								</select>
+							</div>
+							<div class="col-12 col-md-4">
+								<label for="inputPassword" class="form-label fw-bold">パスワード</label>
+								<input type="password" class="form-control" id="inputPassword" placeholder="パスワードを入力">
+							</div>
+						</div>
+
+						<div class="form-check mb-3">
+							<input class="form-check-input" type="checkbox" id="checkPassword">
+							<label class="form-check-label text-muted small" href="#" for="checkPassword">
+								パスワードを表示
+							</label>
+						</div>
+
+						<div class="mb-4">
+							<label for="textareaMessage" class="form-label fw-bold">メッセージ</label>
+							<textarea class="form-control" id="textareaMessage" rows="5"
+								placeholder="メッセージを入力してください"></textarea>
+						</div>
+
+						<div class="text-start">
+							<button type="submit" class="btn btn-teal px-4 py-2 fw-bold shadow-sm">送信</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
