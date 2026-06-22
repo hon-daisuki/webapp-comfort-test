@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>飯田天哉の自己紹介</title>
+</head>
+
+</head>
+<body>
+	<form action="#" method="post">
+  <table class="input-table">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>入力欄</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><label for="name">名前</label></th>
+        <td>
+          <input type="text" id="name" name="name" value="飯田天哉" required>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="birthday">生年月日</label></th>
+        <td>
+          <input type="date" id="birthday" name="birthday" value="2000-08-22" required>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="age">年齢</label></th>
+        <td>
+          <input type="number" id="age" name="age" min="0" max="150" value="16"> 歳
+        </td>
+      </tr>
+      <tr>
+        <th><label for="hobby">趣味</label></th>
+        <td>
+          <input type="text" id="hobby" name="hobby" value="勉強・ランニング">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button-container">
+    <button type="submit">登録する</button>
+  </div>
+</form>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お気に入りコメント付き自己紹介</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <section class="card comment-card">
+        <h2>好きな物へのコメント</h2>
+        <form action="#" method="post" class="item-comment-form">
+          
+          <div class="form-group">
+            <label for="item-select">何について書く？</label>
+            <select id="item-select" name="item-category" required>
+              <option value="">選択してください</option>
+              <option value="character">好きなキャラについて</option>
+              <option value="food">好きなたべものについて</option>
+              <option value="hobby">その他の趣味について</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="item-name">具体的な名前</label>
+            <input type="text" id="item-name" name="item-name" value="クラスのみんな" required>
+          </div>
+
+          <div class="form-group">
+            <label for="item-review">コメント・推しポイント</label>
+            <textarea id="item-review" name="item-review" rows="4" placeholder="ここが最高！という熱いコメントをどうぞ" required>規律を守り、仲間と協力して成長できるところが最高です。</textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">コメントを投稿する</button>
+        </form>
+      </section>
+
+
+
+  <div class="bottom-navbar">
+    <div class="nav-container">
+  
+      <nav class="nav-links">
+        <ul>
+          <li class="nav-dropd own">
+        
+            </ul>
+       
+      </nav>
+    </div>
+  </div>
+
+
+
+</body>
+</html>

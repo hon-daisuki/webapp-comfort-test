@@ -103,5 +103,19 @@
     "folder": "project_15",
     "entry": "bootstrap_sample/public/bootstrap_practice/boot.html",
     "title": "詳細プロフィール | 麗日お茶子"
+  },
+  {
+    "number": 16,
+    "archive": "bootstrap_practice (16).zip",
+    "folder": "project_16",
+    "entry": "bootstrap_sample/public/bootstrap_practice/boot.html",
+    "title": "飯田天哉の自己紹介"
+  },
+  {
+    "number": 17,
+    "archive": "bootstrap_practice (17).zip",
+    "folder": "project_17",
+    "entry": "bootstrap_sample/public/bootstrap_practice/jikosyoukai.html",
+    "title": "蛙吹梅雨の自己紹介"
   }
 ]
